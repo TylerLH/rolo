@@ -1,0 +1,23 @@
+{
+  "name": "rolo",
+  "version": "0.1.0",
+  "description": "Roles plugin for Mongoose.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha "
+  },
+  "keywords": [
+    "mongoose",
+    "roles"
+  ],
+  "author": "Tyler Hughes <iampbt@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "mongoose": "^3.8.21"
+  },
+  "dependencies": {
+    "underscore": "^1.7.0"
+  }
+}
