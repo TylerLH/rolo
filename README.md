@@ -1,5 +1,6 @@
 # Rolo
-### A roles plugin for Mongoose.js
+
+A simple roles plugin for Mongoose.js models.
 
 ## Installation
 
