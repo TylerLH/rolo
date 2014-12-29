@@ -26,14 +26,18 @@ function Rolo (schema, options) {
   *  Add a role to roles array
   *
   *  @method addRole
+  *  @async
   *  @param {String} role The role to be added
-  *  @return {Boolean} Returns true if role was added, false if not
+  *  @param {Function}[callback] done Callback function
   */
-  function addRole(role) {
+  function addRole(role, done) {
     role = role.toLowerCase();
-    if (this.hasRole(role)) return false;
+    if (this.hasRole(role)) return done(null, false);
     this.roles.push(role);
-    return true;
+    this.save(function(err) {
+      if (err) return done(err);
+      done(null, true);
+    });
   }
   schema.methods.addRole = addRole;
 
@@ -41,16 +45,20 @@ function Rolo (schema, options) {
   *  Remove a role from roles array
   *
   *  @method removeRole
+  *  @async
   *  @param {String} role The role to be removed
-  *  @return {Boolean} Returns true if role was removed, false if not
+  *  @param {Function}[callback] done Callback function
   */
-  function removeRole(role) {
+  function removeRole(role, done) {
     role = role.toLowerCase();
     if ( this.hasRole(role) ) {
       this.roles = _.without(this.roles, role);
-      return true;
+      this.save(function(err) {
+        if (err) return done(err);
+        done(null, true);
+      });
     } else {
-      return false;
+      return done(null, false);
     }
   }
   schema.methods.removeRole = removeRole;

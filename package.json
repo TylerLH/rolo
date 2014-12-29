@@ -1,14 +1,15 @@
 {
   "name": "rolo",
-  "version": "0.1.0",
-  "description": "Roles plugin for Mongoose.js",
+  "version": "0.1.1",
+  "description": "Simple roles for your Mongoose models.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test --reporter spec --recursive --growl"
   },
   "keywords": [
     "mongoose",
-    "roles"
+    "roles",
+    "authorization"
   ],
   "author": "Tyler Hughes <iampbt@gmail.com>",
   "license": "ISC",

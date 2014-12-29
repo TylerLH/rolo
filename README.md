@@ -32,7 +32,12 @@ A simple roles plugin for Mongoose.js models.
     if (err) throw err;
 
     // Assign a role to a model
-    user.addRole('admin');
+    user.addRole('admin', function(err, added) {
+      if (err) throw err;
+      if (added) {
+        // Role was added successfully, do stuff
+      }
+    });
 
     // Query a model for a specific role
     if ( user.hasRole('admin') ) {
