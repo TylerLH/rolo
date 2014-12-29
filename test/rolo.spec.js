@@ -28,6 +28,10 @@ describe('Rolo', function () {
     });
   });
 
+  /*
+  *  Test adding a role
+  */
+
   describe('~addRole(role: String)', function() {
 
     before('add admin role to user', function(done) {
@@ -51,6 +55,10 @@ describe('Rolo', function () {
 
   });
 
+  /*
+  *  Test for role existence
+  */
+
   describe('~hasRole(role: String)', function() {
 
     it("should return true if user has role", function() {
@@ -61,6 +69,10 @@ describe('Rolo', function () {
       expect(currentUser.hasRole('notAdmin')).to.equal(false);
     });
   });
+
+  /*
+  *  Test removing role from model
+  */
 
   describe('~removeRole(role: String)', function() {
     it("should successfully remove a role if assigned", function() {

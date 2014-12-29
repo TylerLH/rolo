@@ -7,46 +7,46 @@ A simple roles plugin for Mongoose.js models.
 1. Use npm to install by running `npm install --save rolo` in your project
 2. Register rolo as a plugin in your Mongoose models:
 
-```node
-  // ./models/user.js
+  ```node
+    // ./models/user.js
 
-  var mongoose  = require('mongoose');
-  var Schema    = mongoose.Schema;
-  var rolo      = require('rolo');
+    var mongoose  = require('mongoose');
+    var Schema    = mongoose.Schema;
+    var rolo      = require('rolo');
 
-  var schema = new Schema({
-    name: String
-  });
+    var schema = new Schema({
+      name: String
+    });
 
-  schema.plugin(rolo);
+    schema.plugin(rolo);
 
-  module.exports = mongoose.model('User', schema);
-```
+    module.exports = mongoose.model('User', schema);
+  ```
 
 3. Use Rolo's methods to manage and query your model's roles.
 
-```node
-  var User = require('./models/user');
+  ```node
+    var User = require('./models/user');
 
-  User.find({name: 'Tyler'}, function (err, user) {
-    if (err) throw err;
-
-    // Assign a role to a model
-    user.addRole('admin', function(err, added) {
+    User.find({name: 'Tyler'}, function (err, user) {
       if (err) throw err;
-      if (added) {
-        // Role was added successfully, do stuff
+
+      // Assign a role to a model
+      user.addRole('admin', function(err, added) {
+        if (err) throw err;
+        if (added) {
+          // Role was added successfully, do stuff
+        }
+      });
+
+      // Query a model for a specific role
+      if ( user.hasRole('admin') ) {
+        // user is an admin
       }
-    });
 
-    // Query a model for a specific role
-    if ( user.hasRole('admin') ) {
-      // user is an admin
-    }
-
-    // etc...
-  })
-```
+      // etc...
+    })
+  ```
 
 ### License Information
 
