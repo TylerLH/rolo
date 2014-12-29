@@ -33,7 +33,7 @@ describe('Rolo', function () {
     });
   });
 
-  describe('#addRole(role: String)', function() {
+  describe('~addRole(role: String)', function() {
 
     it("should add role to model's roles array", function() {
       var length = currentUser.roles.length;
@@ -49,8 +49,17 @@ describe('Rolo', function () {
 
   });
 
-  describe('#hasRole(role: String)', function() {
+  describe('~removeRole(role: String)', function() {
+    it("should remove role and return true if role exists", function() {
+      var length = currentUser.roles.length;
+      expect(currentUser.removeRole('admin')).to.equal(true);
+      expect(currentUser.roles.length).to.equal(length-1);
+    });
+  });
+
+  describe('~hasRole(role: String)', function() {
     it("should return true if user has role", function() {
+      currentUser.addRole('admin');
       expect(currentUser.hasRole('admin')).to.equal(true);
     });
 
