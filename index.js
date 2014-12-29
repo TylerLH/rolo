@@ -12,11 +12,13 @@ var plugin = function plugin (schema, options) {
   schema.add({roles: [String]});
 
   schema.methods.addRole = function addRole(role) {
+    role = role.toLowerCase();
+    if (this.hasRole(role)) return;
     this.roles.push(role);
   };
 
   schema.methods.hasRole = function hasRole(role) {
-    return _.contains(this.roles, role);
+    return _.contains(this.roles, role.toLowerCase());
   };
 };
 
