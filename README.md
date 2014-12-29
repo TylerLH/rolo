@@ -1,4 +1,51 @@
 # Rolo
 ### A roles plugin for Mongoose.js
 
-In development. Don't use in production yet.
+## Installation
+
+1. Use npm to install by running `npm install --save rolo` in your project
+2. Register rolo as a plugin in your Mongoose models:
+
+```node
+  // ./models/user.js
+
+  var mongoose  = require('mongoose');
+  var Schema    = mongoose.Schema;
+  var rolo      = require('rolo');
+
+  var schema = new Schema({
+    name: String
+  });
+
+  schema.plugin(rolo);
+
+  module.exports = mongoose.model('User', schema);
+```
+
+3. Use Rolo's methods to manage and query your model's roles.
+
+```node
+  var User = require('./models/user');
+
+  User.find({name: 'Tyler'}, function (err, user) {
+    if (err) throw err;
+
+    // Assign a role to a model
+    user.addRole('admin');
+
+    // Query a model for a specific role
+    if ( user.hasRole('admin') ) {
+      // user is an admin
+    }
+
+    // etc...
+  })
+```
+
+### License Information
+
+Copyright (c) 2014, Tyler Hughes <iampbt@gmail.com>
+
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
